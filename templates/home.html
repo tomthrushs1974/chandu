@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <p hidden> Parava ilayea page source paakura alavuku thermaa irukaa ... ans inga ilayea and ddos attack proct um iruku</p>
+    <title>Home</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+    <style>
+        body { display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; background-color: black; }
+        #animation-container { width: 300px; height: 300px; }
+        #hi-message { display: none; font-size: 2rem; font-family: Arial, sans-serif; }
+        img{ display:block; width:100%; height:100%; object-fit: cover; }
+    </style>
+</head>
+<body>
+    <div id="animation-container"></div>
+    <div id="hi-message">
+        <img src="/static/loki.png" alt="hi chellamea">
+    </div>
+    <script>
+        const animationContainer = document.getElementById('animation-container');
+        const hiMessage = document.getElementById('hi-message');
+        const animation = lottie.loadAnimation({
+            container: animationContainer,
+            renderer: 'svg',
+            loop: false,
+            autoplay: true,
+            path: '/static/lottie.json' // Replace with your Lottie animation file path
+        });
+
+        animation.addEventListener('complete', () => {
+            animationContainer.style.display = 'none';
+            hiMessage.style.display = 'block';
+            setTimeout(() => { window.location.href = '/identity'; }, 2000);
+        });
+    </script>
+</body>
+</html>

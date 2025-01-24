@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neethan Chaaaaru va ???</title>
+  <p hidden> Parava ilayea page source paakura alavuku thermaa irukaa ... ans inga ilayea and ddos attack proct um iruku</p>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+        }
+
+        .background-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .background-animation::after {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, #A020F0 5%, transparent 20%) center/10px 10px;
+            animation: moveBackground 10s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            box-shadow: 0 0 16px rgba(0, 255, 150, 0.6);
+            animation: fadeIn 1.5s ease;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .card h1 {
+            margin: 0 0 16px;
+            font-size: 24px;
+            color: #0f0;
+        }
+
+        .choices {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .choice {
+            padding: 12px 24px;
+            border: 2px solid #0f0;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            color: #1c801c;
+            transition: all 0.3s ease;
+        }
+
+        .choice:hover {
+            background: #0f0;
+            color: #000;
+        }
+        /* The alert message box */
+        .alert {
+          padding: 20px;
+          background-color: #f44336; /* Red */
+          color: white;
+          margin-bottom: 15px;
+        }
+
+        /* The close button */
+        .closebtn {
+          margin-left: 15px;
+          color: white;
+          font-weight: bold;
+          float: right;
+          font-size: 22px;
+          line-height: 20px;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+
+        /* When moving the mouse over the close button */
+        .closebtn:hover {
+          color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-animation"></div>
+    <form method="POST">
+        <div class="card">
+            <h1>{{ question.question }}</h1>
+            <div class="choices">
+                {% for choice in question.choices %}
+                    <button type="submit" class="choice" name="{{ question.id }}" value="{{ choice }}">{{ choice }}</button>
+                {% endfor %}
+            </div>
+        </div>
+    </form>
+    {% if error %}
+        <div class="alert">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{ error }}
+        </div>
+    {% endif %}
+</body>
+</html>
