@@ -7,6 +7,7 @@ from flask_limiter.util import get_remote_address
 
 app = Flask(__name__)
 app.secret_key = "chaaru"
+app.config["DEBUG"] = False
 limiter = Limiter(
     get_remote_address,
     app=app,
