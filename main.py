@@ -7,7 +7,13 @@ from flask_limiter.util import get_remote_address
 
 app = Flask(__name__)
 app.secret_key = "chaaru"
-limiter = Limiter(get_remote_address, app=app, default_limits=["200 per day", "50 per hour"])
+limiter = Limiter(
+    get_remote_address,
+    app=app,
+    storage_uri="redis://localhost:6379"  # Ensure Redis is running
+    default_limits=["200 per day", "50 per hour"]
+)
+
 user_data = {}
 
 
