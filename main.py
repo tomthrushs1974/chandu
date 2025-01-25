@@ -8,18 +8,17 @@ from flask_limiter.util import get_remote_address
 app = Flask(__name__)
 app.secret_key = "chaaru"
 app.config["DEBUG"] = False
-# limiter = Limiter(
-#     get_remote_address,
-#     app=app,
-#     storage_uri="redis://localhost:6379"  # Ensure Redis is running
-#     default_limits=["200 per day", "50 per hour"]
-# )
+limiter = Limiter(
+     get_remote_address,
+     app=app,
+     default_limits=["200 per day", "50 per hour"]
+ )
 
 user_data = {}
 
 
 @app.route('/')
-#@limiter.limit("5 per minute")
+@limiter.limit("5 per minute")
 def home():
     return render_template('home.html')
 
@@ -54,7 +53,7 @@ def identity():
 
 
 @app.route('/message')
-#@limiter.limit("5 per minute")
+@limiter.limit("5 per minute")
 def message():
     ip = request.remote_addr
     if ip not in user_data:
@@ -68,4 +67,4 @@ def message():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=80, debug=False)
+    app.run(host="0.0.0.0", port=5000, debug=False)
